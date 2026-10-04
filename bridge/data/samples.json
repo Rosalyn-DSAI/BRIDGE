@@ -1,0 +1,466 @@
+{
+  "tech": {
+    "title": "信息安全培训通知",
+    "lang": "zh",
+    "zone": "Asia/Shanghai",
+    "date": "2026-10-15",
+    "time": "17:00",
+    "missing": "The deadline and time zone are stated. Check the exception before scheduling.",
+    "source": [
+      "新入职员工须于2026年10月15日北京时间17:00前，在员工学习平台完成信息安全培训。",
+      "完成后，请将确认邮件转发给直属主管。",
+      "本年度已完成该培训的员工无需重复参加，但须在同一截止时间前提交此前的完成证明。"
+    ],
+    "out": {
+      "en": {
+        "meaning": "Complete security training on the employee learning platform by October 15, 2026 at 5:00 p.m. China time. If you already completed it this year, send your previous proof instead.",
+        "actions": [
+          "Complete the training, then forward the confirmation email to your supervisor.",
+          "If already completed this year, provide your earlier completion proof by the same deadline."
+        ],
+        "refs": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "condition": "Already trained this year? Do not repeat it. Provide proof instead. The platform link is not included.",
+        "task": "Complete security training or provide this year’s completion proof",
+        "words": [
+          [
+            "须",
+            "Must; you are required to do it."
+          ],
+          [
+            "直属主管",
+            "Your direct supervisor."
+          ]
+        ]
+      },
+      "zh": {
+        "meaning": "请在2026年10月15日北京时间下午5点前，在员工学习平台完成信息安全培训。如果今年已经完成，提交之前的完成证明即可。",
+        "actions": [
+          "完成培训后，把确认邮件转发给直属主管。",
+          "如果今年已完成培训，请在同一截止时间前提交完成证明。"
+        ],
+        "refs": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "condition": "今年已完成培训的员工不用再参加，但仍需提交证明。原文没有提供平台链接。",
+        "task": "完成信息安全培训或提交今年的完成证明",
+        "words": [
+          [
+            "须",
+            "必须做。"
+          ],
+          [
+            "直属主管",
+            "直接负责管理您的主管。"
+          ]
+        ]
+      },
+      "ja": {
+        "meaning": "2026年10月15日午後5時（中国時間）までに、社員学習サイトで情報セキュリティ研修を終えてください。今年すでに受講した場合は、以前の修了証明を提出してください。",
+        "actions": [
+          "研修が終わったら、確認メールを直属の上司に転送してください。",
+          "今年すでに受講した場合は、同じ期限までに修了証明を提出してください。"
+        ],
+        "refs": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "condition": "今年受講済みなら、もう一度受ける必要はありません。証明の提出は必要です。サイトのリンクはありません。",
+        "task": "情報セキュリティ研修を修了する、または今年の修了証明を提出する",
+        "words": [
+          [
+            "须",
+            "必ずする必要がある、という意味です。"
+          ],
+          [
+            "直属主管",
+            "直属の上司。"
+          ]
+        ]
+      },
+      "es": {
+        "meaning": "Completa la formación de seguridad en la plataforma de aprendizaje antes del 15 de octubre de 2026 a las 17:00, hora de China. Si ya la hiciste este año, entrega el comprobante anterior.",
+        "actions": [
+          "Completa la formación y reenvía el correo de confirmación a tu supervisor.",
+          "Si ya la completaste este año, entrega el comprobante antes de la misma fecha límite."
+        ],
+        "refs": [
+          [
+            0,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "condition": "Si ya hiciste la formación este año, no tienes que repetirla, pero debes presentar el comprobante. No se incluye el enlace a la plataforma.",
+        "task": "Completar la formación de seguridad o entregar el comprobante de este año",
+        "words": [
+          [
+            "须",
+            "Es obligatorio."
+          ],
+          [
+            "直属主管",
+            "Tu supervisor directo."
+          ]
+        ]
+      }
+    }
+  },
+  "ai": {
+    "title": "モデル評価レポート",
+    "lang": "ja",
+    "zone": "Asia/Tokyo",
+    "date": "",
+    "time": "",
+    "missing": "No deadline is stated. Enter your own follow-up date and time; it will be labeled as your choice.",
+    "source": [
+      "最新の評価期間において、モデルの適合率は0.91から0.76に低下しました。",
+      "低下は加盟店カテゴリが欠損している取引に集中していますが、原因はまだ特定されていません。",
+      "再学習を検討する前に、入力データを生成する処理を調査してください。"
+    ],
+    "out": {
+      "en": {
+        "meaning": "Of the transactions the model flagged as positive, 76% were correct, down from 91%. The decline is concentrated in transactions with missing merchant categories. The cause is not confirmed.",
+        "actions": [
+          "Investigate the process that produces the input data before considering retraining."
+        ],
+        "refs": [
+          [
+            2
+          ]
+        ],
+        "condition": "No deadline or responsible person is stated. Missing data is a finding, not a confirmed cause.",
+        "task": "Investigate the model input-data process before considering retraining",
+        "words": [
+          [
+            "適合率",
+            "Precision: the share of positive predictions that are correct."
+          ],
+          [
+            "再学習",
+            "Training a model again."
+          ]
+        ]
+      },
+      "zh": {
+        "meaning": "模型判为正例的交易中，正确比例从91%降到了76%。下降主要出现在缺少商户类别的交易中，但原因还没有确定。",
+        "actions": [
+          "在考虑重新训练模型之前，调查生成输入数据的处理流程。"
+        ],
+        "refs": [
+          [
+            2
+          ]
+        ],
+        "condition": "原文没有截止时间或负责人。数据缺失是一项发现，并不代表已经确定原因。",
+        "task": "在考虑重新训练前调查模型输入数据流程",
+        "words": [
+          [
+            "適合率",
+            "精确率：预测为正例的结果中，实际正确的比例。"
+          ],
+          [
+            "再学習",
+            "重新训练模型。"
+          ]
+        ]
+      },
+      "ja": {
+        "meaning": "モデルが正例と判断した取引のうち、正しかった割合が91%から76%に下がりました。加盟店カテゴリがない取引で低下が目立ちますが、原因はまだわかっていません。",
+        "actions": [
+          "再学習を考える前に、入力データを作る処理を調べてください。"
+        ],
+        "refs": [
+          [
+            2
+          ]
+        ],
+        "condition": "期限と担当者は書かれていません。データの欠損が原因だと確定したわけではありません。",
+        "task": "再学習を考える前にモデルの入力データ処理を調べる",
+        "words": [
+          [
+            "適合率",
+            "正例と予測したもののうち、実際に正しかった割合。"
+          ],
+          [
+            "再学習",
+            "モデルをもう一度学習させること。"
+          ]
+        ]
+      },
+      "es": {
+        "meaning": "De las transacciones que el modelo marcó como positivas, el 76% eran correctas, frente al 91% anterior. La caída se concentra en transacciones sin categoría de comercio. La causa no está confirmada.",
+        "actions": [
+          "Investiga el proceso que genera los datos de entrada antes de considerar volver a entrenar el modelo."
+        ],
+        "refs": [
+          [
+            2
+          ]
+        ],
+        "condition": "No se indica fecha límite ni responsable. Los datos faltantes son un hallazgo, no una causa confirmada.",
+        "task": "Investigar el proceso de datos de entrada antes de considerar el reentrenamiento",
+        "words": [
+          [
+            "適合率",
+            "Precisión: proporción de predicciones positivas que son correctas."
+          ],
+          [
+            "再学習",
+            "Volver a entrenar un modelo."
+          ]
+        ]
+      }
+    }
+  },
+  "finance": {
+    "title": "Excepciones de conciliación",
+    "lang": "es",
+    "zone": "Europe/Madrid",
+    "date": "2026-10-12",
+    "time": "",
+    "missing": "The date is stated, but the time and time zone are not. Confirm them; Madrid is only a demo suggestion.",
+    "source": [
+      "La conciliación diaria identificó 126 transacciones sin un registro de liquidación coincidente.",
+      "El equipo de Operaciones debe investigar estas excepciones y entregar un resumen de resolución antes del 12 de octubre de 2026.",
+      "Este hallazgo no confirma una pérdida de fondos."
+    ],
+    "out": {
+      "en": {
+        "meaning": "The daily comparison found 126 transactions without a matching settlement record. This does not confirm that money is missing.",
+        "actions": [
+          "Operations must investigate the unmatched records and submit a resolution summary before October 12, 2026."
+        ],
+        "refs": [
+          [
+            1
+          ]
+        ],
+        "condition": "No exact time or time zone is stated. Confirm the cutoff before saving a reminder.",
+        "task": "Investigate unmatched transactions and submit a resolution summary",
+        "words": [
+          [
+            "Conciliación",
+            "Comparing records to check that they agree."
+          ],
+          [
+            "Liquidación",
+            "Settlement: completing a payment obligation."
+          ]
+        ]
+      },
+      "zh": {
+        "meaning": "每日核对发现126笔交易没有匹配的结算记录。这不能证明资金丢失。",
+        "actions": [
+          "运营团队须调查这些不匹配记录，并在2026年10月12日之前提交处理结果摘要。"
+        ],
+        "refs": [
+          [
+            1
+          ]
+        ],
+        "condition": "原文没有具体时间或时区。设置提醒前，请确认准确截止时间。",
+        "task": "调查不匹配交易并提交处理结果摘要",
+        "words": [
+          [
+            "Conciliación",
+            "核对不同记录是否一致。"
+          ],
+          [
+            "Liquidación",
+            "结算：完成付款义务。"
+          ]
+        ]
+      },
+      "ja": {
+        "meaning": "毎日の照合で、対応する決済記録がない取引が126件見つかりました。資金が失われたと確認されたわけではありません。",
+        "actions": [
+          "業務担当チームは不一致を調べ、2026年10月12日より前に対応結果の概要を提出する必要があります。"
+        ],
+        "refs": [
+          [
+            1
+          ]
+        ],
+        "condition": "具体的な時刻とタイムゾーンは書かれていません。リマインダーを設定する前に確認してください。",
+        "task": "記録が一致しない取引を調査し、対応結果の概要を提出する",
+        "words": [
+          [
+            "Conciliación",
+            "記録を比較して一致するか確認すること。"
+          ],
+          [
+            "Liquidación",
+            "決済：支払い義務を完了すること。"
+          ]
+        ]
+      },
+      "es": {
+        "meaning": "La revisión diaria encontró 126 transacciones sin un registro de liquidación que coincida. Esto no demuestra que falte dinero.",
+        "actions": [
+          "Operaciones debe investigar los registros y entregar un resumen de resolución antes del 12 de octubre de 2026."
+        ],
+        "refs": [
+          [
+            1
+          ]
+        ],
+        "condition": "No se indica la hora exacta ni la zona horaria. Confirma el límite antes de guardar el recordatorio.",
+        "task": "Investigar transacciones sin coincidencia y entregar un resumen de resolución",
+        "words": [
+          [
+            "Conciliación",
+            "Comparar registros para comprobar que coinciden."
+          ],
+          [
+            "Liquidación",
+            "Completar una obligación de pago."
+          ]
+        ]
+      }
+    }
+  },
+  "student": {
+    "title": "Arrival information required",
+    "lang": "en",
+    "zone": "America/Chicago",
+    "date": "2026-10-09",
+    "time": "17:00",
+    "missing": "The deadline and time zone are stated. The portal link is not included.",
+    "source": [
+      "All incoming exchange participants must submit the Arrival Information Form via the student portal by October 9, 2026 at 5:00 p.m. Central Time (America/Chicago).",
+      "If your travel plans are not final, enter “not confirmed” in the relevant fields and submit by the same deadline.",
+      "Late submission may delay airport pickup arrangements."
+    ],
+    "out": {
+      "en": {
+        "meaning": "Send your arrival form by October 9, 2026 at 5:00 p.m. US Central Time. Send it even if your travel plans are not final.",
+        "actions": [
+          "Complete and submit the Arrival Information Form in the student portal.",
+          "Write “not confirmed” for travel details you do not know yet; do not wait to submit."
+        ],
+        "refs": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "condition": "Late submission may delay airport pickup. The message does not include the portal link.",
+        "task": "Submit my Arrival Information Form",
+        "words": [
+          [
+            "Relevant fields",
+            "The parts of the form asking for those details."
+          ],
+          [
+            "May",
+            "Something is possible, not certain."
+          ]
+        ]
+      },
+      "zh": {
+        "meaning": "请在2026年10月9日美国中部时间下午5点前提交抵达信息表。即使行程还没有确定，也要按时提交。",
+        "actions": [
+          "在学生门户填写并提交抵达信息表。",
+          "尚未确定的行程信息请填写“not confirmed”，不要因此推迟提交。"
+        ],
+        "refs": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "condition": "迟交可能会延误接机安排。原文没有提供门户链接。",
+        "task": "提交抵达信息表",
+        "words": [
+          [
+            "Relevant fields",
+            "表格中填写相关信息的位置。"
+          ],
+          [
+            "May",
+            "表示有可能，并非一定。"
+          ]
+        ]
+      },
+      "ja": {
+        "meaning": "2026年10月9日午後5時（米国中部時間）までに到着情報フォームを提出してください。旅行の予定が決まっていなくても、期限までに提出します。",
+        "actions": [
+          "学生ポータルで到着情報フォームを記入して提出してください。",
+          "まだ決まっていない旅行情報には「not confirmed」と記入し、提出を遅らせないでください。"
+        ],
+        "refs": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "condition": "提出が遅れると、空港送迎の手配が遅れる可能性があります。ポータルのリンクはありません。",
+        "task": "到着情報フォームを提出する",
+        "words": [
+          [
+            "Relevant fields",
+            "その情報を書くフォームの項目。"
+          ],
+          [
+            "May",
+            "可能性があるという意味で、確実ではありません。"
+          ]
+        ]
+      },
+      "es": {
+        "meaning": "Envía el formulario de llegada antes del 9 de octubre de 2026 a las 17:00, hora central de Estados Unidos. Envíalo aunque tu viaje todavía no esté confirmado.",
+        "actions": [
+          "Completa y envía el formulario de llegada en el portal del estudiante.",
+          "Escribe “not confirmed” en los datos de viaje que aún no sepas. No retrases el envío."
+        ],
+        "refs": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "condition": "Enviarlo tarde podría retrasar la organización de la recogida en el aeropuerto. No se incluye el enlace al portal.",
+        "task": "Enviar mi formulario de llegada",
+        "words": [
+          [
+            "Relevant fields",
+            "Los campos del formulario que piden esos datos."
+          ],
+          [
+            "May",
+            "Indica una posibilidad, no una certeza."
+          ]
+        ]
+      }
+    }
+  }
+}

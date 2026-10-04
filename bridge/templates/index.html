@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf-token" content="{{ csrf }}">
+<meta name="color-scheme" content="light dark">
+<title>BRIDGE · Clarity that leads to action</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E7A50'/%3E%3Cg fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M4 23h24'/%3E%3Cpath d='M8 23v-4a8 8 0 0 1 16 0v4'/%3E%3Cpath d='M16 11v12'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+<script src="{{ url_for('static',filename='app.js') }}" defer></script>
+</head>
+<body>
+<div class="app">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================ Top bar ============================ -->
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a href="#understand" class="brand" aria-label="BRIDGE home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.5 17.5h19"/><path d="M5.5 17.5v-4a6.5 6.5 0 0 1 13 0v4"/><path d="M12 6.6v10.9"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">BRIDGE</span>
+        <span class="brand__tag">Clarity that leads to action</span>
+      </span>
+    </a>
+
+    <div class="topbar__right">
+      <div id="mode-banner" class="status-cluster" role="status" aria-live="polite">
+        <span class="chip-status"><span class="chip-status__dot"></span>Loading configuration…</span>
+      </div>
+      <div class="account">
+        <span id="account-label" class="account__anon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"/></svg>
+          Not signed in
+        </span>
+        <button id="sign-in" class="btn btn--sm" type="button">Email sign-in</button>
+        <button id="sign-out" class="btn btn--sm" type="button" hidden>Sign out</button>
+        <button id="theme-toggle" class="btn btn--sm btn--icon" type="button" title="Switch light / dark appearance" aria-label="Switch light or dark appearance">
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2M12 19.4v2M2.6 12h2M19.4 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= Step navigation ======================= -->
+<nav class="steps" aria-label="Main navigation">
+  <div class="shell">
+    <div class="steps__track">
+      <button class="step" data-page="understand" type="button" aria-current="page">
+        <span class="step__dot" aria-hidden="true">1</span>
+        <span class="step__body">
+          <span class="step__label">Understand</span>
+          <span class="step__hint">Explain a message</span>
+        </span>
+      </button>
+      <button class="step" data-page="tasks" type="button">
+        <span class="step__dot" aria-hidden="true">2</span>
+        <span class="step__body">
+          <span class="step__label">My tasks <span id="task-count" class="step__badge"></span></span>
+          <span class="step__hint">Deadlines &amp; reminders</span>
+        </span>
+      </button>
+      <button class="step" data-page="inbox" id="inbox-nav" type="button">
+        <span class="step__dot" aria-hidden="true">3</span>
+        <span class="step__body">
+          <span class="step__label">Local inbox</span>
+          <span class="step__hint">Preview delivered email</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="main">
+<div class="shell">
+  <div id="global-message" role="status" aria-live="polite"></div>
+
+  <!-- ======================== 1 · Understand ======================= -->
+  <div class="page" id="page-understand">
+    <section class="hero">
+      <p class="eyebrow">Across languages · Across workplaces</p>
+      <h1 class="hero__title display">Understand what matters.<br><em>Know what comes next.</em></h1>
+      <p class="hero__lede">
+        Paste an email, notice, or report in any of four languages. BRIDGE explains it in plain
+        language, shows the exact sentence behind every instruction, and turns what you decide
+        into a task with an email reminder.
+      </p>
+      <div class="hero__meta">
+        <span class="lang-tag"><strong>English</strong></span>
+        <span class="lang-tag"><strong>简体中文</strong><span class="lang-tag__sep">·</span>Simplified Chinese</span>
+        <span class="lang-tag"><strong>日本語</strong><span class="lang-tag__sep">·</span>Japanese</span>
+        <span class="lang-tag"><strong>Español</strong><span class="lang-tag__sep">·</span>Spanish</span>
+      </div>
+    </section>
+
+    <section class="examples-strip" aria-labelledby="examples-title">
+      <div class="row row--between">
+        <h2 class="section-title mb-0" id="examples-title">Try an example</h2>
+      </div>
+      <div class="examples-grid" id="examples"></div>
+      <p class="quiet mt-1">Examples are independent of your language settings — your own message can be about any topic.</p>
+    </section>
+
+    <div class="workspace">
+      <!-- ---------- Input ---------- -->
+      <section class="panel" aria-labelledby="input-title">
+        <div class="panel__head">
+          <span class="panel__num" aria-hidden="true">01</span>
+          <div>
+            <h2 class="panel__title" id="input-title">Original message</h2>
+            <p class="panel__sub">Choose the language pair, then paste the text you need to understand.</p>
+          </div>
+        </div>
+
+        <div class="langpair">
+          <label class="field">
+            <span class="field__label">Input language <span class="field__hint" id="detected-hint"></span></span>
+            <select id="input-language">
+              <option value="auto">Detect automatically</option>
+              <option value="en">English</option>
+              <option value="zh">简体中文 (Chinese)</option>
+              <option value="ja">日本語 (Japanese)</option>
+              <option value="es">Español (Spanish)</option>
+            </select>
+          </label>
+          <span class="langpair__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+          <label class="field">
+            <span class="field__label">Explain in</span>
+            <select id="language">
+              <option value="en">English</option>
+              <option value="zh">简体中文 (Chinese)</option>
+              <option value="ja">日本語 (Japanese)</option>
+              <option value="es">Español (Spanish)</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="custom-text-status" class="notice notice--info" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6h.01"/></svg>
+          <span id="custom-text-status-text">Checking configuration…</span>
+        </div>
+
+        <details class="disclosure" id="live-setup" hidden>
+          <summary>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="m5.6 5.6 2.1 2.1"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="m16.3 7.7 2.1-2.1"/><path d="M12 21a7 7 0 0 0 0-14 7 7 0 0 0 0 14Z"/></svg>
+            Enable processing for your own text
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="disclosure__body">
+            <p>Open the project’s <code>.env</code> file on your computer and set:</p>
+            <pre>AI_MODE=gemini
+GEMINI_API_KEY=your-gemini-key-here
+GEMINI_MODEL=gemini-2.5-flash</pre>
+            <p>Restart the web server, then refresh this page. Keep your key in <code>.env</code>; do not paste it into the message box. See <code>docs/LIVE_SERVICES.md</code> for the full instructions.</p>
+          </div>
+        </details>
+
+        <label class="field">
+          <span class="field__label">Document title <span class="field__hint">Saved with your task</span></span>
+          <input id="document-title" type="text" value="My message" maxlength="180" autocomplete="off">
+        </label>
+
+        <label class="field" for="source-input">
+          <span class="field__label">Paste your message <span class="field__hint">Up to 12,000 characters</span></span>
+        </label>
+        <div class="textbox">
+          <textarea id="source-input" rows="12" maxlength="12000" placeholder="Paste an email, report, or notice…" aria-describedby="source-help"></textarea>
+          <div class="textbox__foot">
+            <span class="textbox__count"><span id="char-count">0</span> / 12,000</span>
+            <button class="textbox__action" id="clear-text" type="button" disabled>Clear</button>
+          </div>
+        </div>
+        <p class="quiet" id="source-help">Do not paste confidential material without permission.</p>
+
+        <label class="check mt-2" id="consent-row" hidden>
+          <input type="checkbox" id="consent">
+          <span>I agree to send this text to the configured AI service for processing.</span>
+        </label>
+
+        <div class="action-bar">
+          <span class="action-bar__hint"><kbd>Ctrl</kbd><kbd>Enter</kbd> to run</span>
+          <button id="analyze" class="btn btn--primary btn--lg" type="button">
+            Explain this message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div id="analysis-error" role="alert"></div>
+
+        <details class="disclosure mt-3" id="evidence-panel" hidden open>
+          <summary>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4Z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6Z"/></svg>
+            Source evidence
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="disclosure__body">
+            <p class="quiet mb-2">The highlighted passage is the sentence the instruction was drawn from. Select “Show source” on any instruction to jump to it.</p>
+            <div id="evidence" class="source-evidence"></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ---------- Result ---------- -->
+      <section class="panel panel--raised" aria-labelledby="result-title">
+        <div class="panel__head">
+          <span class="panel__num" aria-hidden="true">02</span>
+          <div>
+            <h2 class="panel__title" id="result-title">Your bridge</h2>
+            <p class="panel__sub">Meaning, instructions, and the details you still need to confirm.</p>
+          </div>
+        </div>
+        <div id="result" class="result-body" aria-live="polite">
+          <div class="empty">
+            <div class="empty__art" aria-hidden="true">
+              <svg width="230" height="128" viewBox="0 0 230 128" fill="none">
+                <defs>
+                  <linearGradient id="bridgeArc" x1="60" y1="120" x2="170" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#1E7A50"/><stop offset="1" stop-color="#0D8C93"/>
+                  </linearGradient>
+                </defs>
+                <rect x="10" y="30" width="52" height="68" rx="9" stroke="currentColor" stroke-opacity=".28" stroke-width="2.2"/>
+                <path d="M22 48h28M22 60h28M22 72h18" stroke="currentColor" stroke-opacity=".28" stroke-width="2.2" stroke-linecap="round"/>
+                <rect x="168" y="30" width="52" height="68" rx="9" stroke="currentColor" stroke-opacity=".28" stroke-width="2.2"/>
+                <path d="M180 48h28M180 60h28M180 72h18" stroke="currentColor" stroke-opacity=".28" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M66 84c14-30 84-30 98 0" stroke="url(#bridgeArc)" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M66 84h98" stroke="url(#bridgeArc)" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="1 9"/>
+                <circle cx="115" cy="60" r="5.5" fill="url(#bridgeArc)"/>
+              </svg>
+            </div>
+            <p class="empty__title">From complicated to clear</p>
+            <p class="empty__text">Paste a message on the left, choose your language pair, and BRIDGE will explain it in plain language.</p>
+            <ul class="empty__list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>Every instruction links back to the exact words in your source.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>Missing deadlines and conditions are flagged, never invented.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>You review every task before a reminder is scheduled.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ========================== 2 · My tasks ======================= -->
+  <div class="page" id="page-tasks" hidden>
+    <div class="page-head">
+      <div class="page-head__text">
+        <p class="eyebrow">Understanding → Follow-through</p>
+        <h1 class="display">Make the next step happen.</h1>
+        <p class="page-head__sub">One email reminder per task. “Sent” means accepted by the email service, not proof of inbox delivery. Completion is confirmed by you.</p>
+      </div>
+      <div class="page-head__actions">
+        <button id="refresh-tasks" class="btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4.5V11h-6.4"/></svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+
+    <div class="stat-grid" id="task-stats" hidden>
+      <div class="stat"><span class="stat__label">Total tasks</span><span class="stat__value" id="stat-total">0</span><span class="stat__foot">Saved to your account</span></div>
+      <div class="stat"><span class="stat__label">Still open</span><span class="stat__value stat__value--brand" id="stat-open">0</span><span class="stat__foot">Awaiting your confirmation</span></div>
+      <div class="stat"><span class="stat__label">Due soon</span><span class="stat__value stat__value--warn" id="stat-soon">0</span><span class="stat__foot">Within the next 48 hours</span></div>
+      <div class="stat"><span class="stat__label">Completed</span><span class="stat__value" id="stat-done">0</span><span class="stat__foot">Confirmed by you</span></div>
+    </div>
+
+    <div class="toolbar" id="task-toolbar" hidden>
+      <div class="segmented" role="group" aria-label="Filter tasks">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="open" aria-pressed="false">Open</button>
+        <button type="button" data-filter="done" aria-pressed="false">Completed</button>
+      </div>
+      <div class="toolbar__spacer">
+        <span class="quiet" id="task-summary"></span>
+      </div>
+    </div>
+
+    <div id="tasks" class="task-list"></div>
+
+    <div id="local-worker" class="notice notice--info mt-2" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+      <div class="grow">
+        <strong>Local review mode.</strong> Keep <code>python worker.py</code> running, or check for due reminders here. Nothing is sent to a real address.
+        <div class="row mt-1">
+          <button id="check-due" class="btn btn--sm" type="button">Check due reminders now</button>
+          <span class="quiet" id="worker-status" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================== 3 · Inbox ========================== -->
+  <div class="page" id="page-inbox" hidden>
+    <div class="page-head">
+      <div class="page-head__text">
+        <p class="eyebrow">Local review only</p>
+        <h1 class="display">Your local inbox.</h1>
+        <p class="page-head__sub">Everything BRIDGE would have emailed, kept inside this app so you can demo the full reminder loop without sending anything.</p>
+      </div>
+      <div class="page-head__actions">
+        <button id="refresh-inbox" class="btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4.5V11h-6.4"/></svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+
+    <div class="notice notice--warn mb-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2.5 20h19Z"/><path d="M12 10v4"/><path d="M12 17.5h.01"/></svg>
+      <span>Nothing in this inbox was sent to a real email address. Sign-in here simulates ownership verification and must stay on localhost.</span>
+    </div>
+
+    <div class="inbox-grid">
+      <section class="panel panel--flat" aria-labelledby="inbox-list-title">
+        <div class="panel__head">
+          <span class="panel__num" aria-hidden="true">✉</span>
+          <div>
+            <h2 class="panel__title" id="inbox-list-title">Messages</h2>
+            <p class="panel__sub" id="inbox-count">No messages yet</p>
+          </div>
+        </div>
+        <div id="mail-list" class="mail-list"></div>
+      </section>
+
+      <section id="mail-view" class="mail-view" aria-live="polite">
+        <div class="mail-view__chrome">
+          <span class="mail-view__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="mail-view__title">Local delivery preview</span>
+        </div>
+        <div class="mail-view__body">
+          <div class="empty empty--plain">
+            <p class="empty__title">No message selected</p>
+            <p class="empty__text">Sign-in links and due reminders appear here instead of being sent for real.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</main>
+
+<!-- ============================ Footer ============================ -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand">
+          <span class="footer__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17.5h19"/><path d="M5.5 17.5v-4a6.5 6.5 0 0 1 13 0v4"/><path d="M12 6.6v10.9"/></svg>
+          </span>
+          <div>
+            <p class="footer__name">BRIDGE</p>
+            <p class="footer__note">Review the original before acting. Full source documents are not saved — task titles and deadlines are.</p>
+          </div>
+        </div>
+      </div>
+      <ul class="footer__list">
+        <li>English</li><li>简体中文</li><li>日本語</li><li>Español</li>
+        <li>Human review required</li>
+      </ul>
+    </div>
+    <p class="footer__legal">Exact quote matching confirms a passage exists — it does not prove the model understood it correctly. No medical, legal, financial, or industrial expertise is claimed.</p>
+  </div>
+</footer>
+</div>
+
+<!-- ========================= Sign-in dialog ======================= -->
+<dialog id="auth-dialog" class="dialog">
+  <form id="auth-form">
+    <div class="dialog__head">
+      <span class="dialog__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
+      </span>
+      <div class="dialog__heading">
+        <h2>Email sign-in</h2>
+        <p>A one-time link, no password. It expires in 15 minutes and works once.</p>
+      </div>
+      <button class="dialog__close" id="close-auth" type="button" aria-label="Close sign-in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="dialog__body">
+      <label class="field">
+        <span class="field__label">Email address</span>
+        <input type="email" id="email" required maxlength="254" autocomplete="email" placeholder="you@example.com">
+      </label>
+      <div id="auth-feedback" role="status"></div>
+    </div>
+    <div class="dialog__foot">
+      <button type="submit" class="btn btn--primary">
+        Send sign-in link
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 15 0"/><path d="m13 6 6 6-6 6"/></svg>
+      </button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ====================== Task / reminder dialog =================== -->
+<dialog id="task-dialog" class="dialog">
+  <form id="task-form">
+    <div class="dialog__head">
+      <span class="dialog__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="16" rx="3"/><path d="m8.5 12.5 2.5 2.5 4.8-5.4"/></svg>
+      </span>
+      <div class="dialog__heading">
+        <h2>Review task &amp; reminder</h2>
+        <p>Dates are entered and confirmed by you — BRIDGE never assumes a deadline from the source text.</p>
+      </div>
+      <button class="dialog__close" id="close-task" type="button" aria-label="Close task review">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="dialog__body">
+      <label class="field">
+        <span class="field__label">Task <span class="field__hint">Sent exactly as entered</span></span>
+        <input id="task-title" required maxlength="600" autocomplete="off">
+      </label>
+      <div id="draft-condition"></div>
+      <div class="detail-row mt-2" id="deadline-hint"></div>
+
+      <div class="dialog__grid">
+        <label class="field">
+          <span class="field__label">Deadline date and time</span>
+          <input type="datetime-local" id="due" required>
+        </label>
+        <label class="field">
+          <span class="field__label">Send reminder at</span>
+          <input type="datetime-local" id="remind" required>
+        </label>
+        <label class="field field--full">
+          <span class="field__label">Time zone <span class="field__hint">Same zone for both dates</span></span>
+          <select id="zone">
+            <option value="America/Chicago">America/Chicago · US Central</option>
+            <option value="Asia/Shanghai">Asia/Shanghai · China</option>
+            <option value="Asia/Tokyo">Asia/Tokyo · Japan</option>
+            <option value="Europe/Madrid">Europe/Madrid · Spain</option>
+            <option value="UTC">UTC</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="confirmed" required>
+        <span>I checked the instruction, exceptions, deadline, and time zone.</span>
+      </label>
+      <div id="task-feedback" role="alert"></div>
+    </div>
+    <div class="dialog__foot">
+      <button type="button" id="quick-times" class="btn btn--sm btn--ghost" hidden>Use quick-test times</button>
+      <button type="submit" class="btn btn--primary">
+        Save task &amp; schedule email
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 15 0"/><path d="m13 6 6 6-6 6"/></svg>
+      </button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>

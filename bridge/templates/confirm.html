@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · BRIDGE</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E7A50'/%3E%3Cg fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M4 23h24'/%3E%3Cpath d='M8 23v-4a8 8 0 0 1 16 0v4'/%3E%3Cpath d='M16 11v12'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<main class="standalone">
+  <div class="confirm-page">
+    <section class="confirm-card">
+      <span class="confirm-card__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.5 17.5h19"/><path d="M5.5 17.5v-4a6.5 6.5 0 0 1 13 0v4"/><path d="M12 6.6v10.9"/>
+        </svg>
+      </span>
+      <p class="eyebrow">BRIDGE</p>
+      <h1>Confirm your sign-in.</h1>
+      <p>This link expires after 15 minutes and works once. Only continue if you requested this sign-in email.</p>
+      <form method="post" action="/auth/confirm">
+        <input type="hidden" name="csrf_token" value="{{ csrf }}">
+        <input type="hidden" name="token" value="{{ token }}">
+        <button class="btn btn--primary btn--lg" type="submit">
+          Sign in to BRIDGE
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+        </button>
+      </form>
+    </section>
+    <p class="quiet center mt-2">Your tasks stay private to this account. BRIDGE never posts or acts on your behalf.</p>
+  </div>
+</main>
+</body>
+</html>
