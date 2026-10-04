@@ -2,53 +2,290 @@
 
 **Clarity that leads to action.**
 
-BRIDGE turns complex or multilingual messages into clear, actionable tasks with dates, locations, missing-information warnings, source evidence, task tracking, and email reminders.
-
 > **Message → Meaning → Action → Connection**
 
-BRIDGE was created around a simple idea: a message has not truly connected two people just because it was delivered. Connection happens when the receiver understands the meaning and knows what to do next.
+BRIDGE turns complex or multilingual messages into clear, actionable instructions with dates, locations, missing-information warnings, source evidence, task tracking, and email reminders.
 
-## What BRIDGE can do
+---
 
-- Explain pasted text in plain language.
-- Translate between **English, Simplified Chinese, Japanese, and Spanish**.
-- Extract instructions into clear, trackable steps.
-- Identify stated dates, times, locations, conditions, and deadlines.
-- Flag important information that is missing instead of inventing it.
-- Show the exact source passage behind an extracted instruction.
-- Let a signed-in user save and track tasks.
-- Schedule one email reminder for a saved task.
-- Mark tasks complete or delete them.
-- Run with prepared examples offline, or use live Gemini/OpenAI processing.
+## Why we built BRIDGE
 
-## Who can use it?
+BRIDGE grew from a communication problem we see around international students.
 
-BRIDGE is designed for anyone who receives instructions that may be long, unfamiliar, multilingual, or easy to misunderstand. Example users include international students, employees, parents, travelers, older adults, schools, universities, workplaces, and service organizations.
+Many students receive important university emails, financial notices, orientation instructions, administrative requests, and other messages in English even when English is not their first language.
 
-BRIDGE is an assistive communication tool, not a replacement for authoritative medical, legal, financial, or institutional advice.
+A student may speak Chinese, Japanese, Spanish, or another language fluently, yet still receive a message containing unfamiliar wording such as:
 
-## How it works
+- complete this before the deadline,
+- report to this location,
+- verify your information,
+- complete these steps,
+- update your status afterward.
 
-1. Choose the input language or let BRIDGE detect it automatically.
-2. Choose the language you want the explanation in.
-3. Paste a message and select **Explain this message**.
-4. Review the plain-language meaning, instructions, dates, location, and missing details.
-5. Use **Show source** to compare an instruction with the original text.
-6. Select **Track this task** if you want to save it.
-7. Sign in with the one-time email link.
-8. Confirm the deadline, reminder time, and time zone yourself.
-9. BRIDGE saves the task and the background worker sends the reminder when due.
-10. Mark the task as done when you complete it, or delete it if you no longer need it.
+The message may have been delivered successfully.
 
-BRIDGE deliberately does **not** assume that an event date is automatically a submission deadline. When the source is unclear, the user is asked to confirm the date instead.
+But delivery does not automatically mean understanding.
 
-## Technology stack
+A person may still wonder:
+
+**What does this mean?**
+
+**What exactly am I supposed to do?**
+
+**Which date is the event date, and which one is the deadline?**
+
+**Where do I need to go?**
+
+**What information is missing?**
+
+BRIDGE was built to reduce that gap.
+
+It does more than translate words.
+
+It helps turn a message into **meaning, instructions, evidence, and action**.
+
+---
+
+## The problem goes beyond international students
+
+International communication inspired BRIDGE, but the same problem exists across many sectors.
+
+BRIDGE can support:
+
+- international students
+- employees and workplace teams
+- parents and families
+- older adults
+- travelers and newcomers
+- schools and universities
+- onboarding teams
+- customer-support environments
+- public-service organizations
+- multilingual communication workflows
+
+Anywhere an important instruction can be misunderstood, there is a potential use case for BRIDGE.
+
+> BRIDGE is an assistive communication tool and not a replacement for authoritative medical, legal, financial, or institutional advice.
+
+---
+
+# How BRIDGE works
+
+## 1. Start with the message
+
+The user chooses the language they want BRIDGE to explain the message in, or lets the system detect the source language automatically.
+
+![BRIDGE homepage](images/01-bridge-homepage.png)
+
+The current prototype supports:
+
+**English · Simplified Chinese · Japanese · Spanish**
+
+---
+
+## 2. Sign in when you want to track tasks
+
+BRIDGE uses passwordless email authentication.
+
+![Email sign-in](images/02-email-sign-in.png)
+
+A one-time sign-in link is sent to the user's email.
+
+![Sign-in email](images/03-sign-in-email-received.png)
+
+The link expires after 15 minutes and works once.
+
+![Confirm sign-in](images/04-confirm-sign-in.png)
+
+Once authenticated, saved tasks remain associated with the user's account.
+
+---
+
+## 3. Paste a message
+
+The user can paste a message written in any currently supported language.
+
+This example uses Japanese.
+
+![Japanese message input](images/06-message-input-japanese.png)
+
+The user does not need to manually ask:
+
+> Translate this.
+
+> Summarize this.
+
+> Find the deadline.
+
+> Extract every instruction.
+
+> Turn this into a checklist.
+
+BRIDGE handles that workflow in one process.
+
+---
+
+## 4. BRIDGE analyzes it
+
+BRIDGE reads the source, identifies instructions, checks important details, and prepares a plain-language result.
+
+![BRIDGE analysis](images/07-ai-analysis-in-progress.png)
+
+The application looks for:
+
+- overall meaning
+- actions
+- individual steps
+- dates and times
+- locations
+- conditions
+- missing information
+- source evidence
+
+---
+
+## 5. The message becomes actionable
+
+BRIDGE returns a structured explanation instead of another long paragraph.
+
+![Translated BRIDGE result](images/08-translated-task-results.png)
+
+The user can immediately see:
+
+**What this means**
+
+**What they need to do**
+
+**When**
+
+**Where**
+
+**Individual steps**
+
+**Missing or ambiguous information**
+
+BRIDGE also deliberately separates an event schedule from a deadline.
+
+If a message says an activity occurs on October 7 but only says *“submit before the deadline”*, BRIDGE does not automatically claim that October 7 is the submission deadline.
+
+If the deadline is missing, it says so.
+
+---
+
+## 6. Check the original evidence
+
+Generative AI can make mistakes.
+
+BRIDGE therefore preserves the source passage supporting the extracted instruction.
+
+![Source evidence](images/09-source-evidence.png)
+
+The goal is not:
+
+> Trust the AI because it sounds confident.
+
+The goal is:
+
+> **Here is what BRIDGE understood, and here is the original text that supports it.**
+
+---
+
+## 7. Track what happens next
+
+Understanding the message is only part of the problem.
+
+The user can select **Track this task** and review the task before saving it.
+
+![Task reminder selection](images/10-task-reminder-date-selection.png)
+
+The deadline, reminder time, and time zone are confirmed by the user.
+
+BRIDGE does not silently invent them.
+
+![Task reminder confirmation](images/11-task-reminder-confirmation.png)
+
+Once saved, the task appears in the user's dashboard.
+
+![BRIDGE task dashboard](images/12-task-dashboard.png)
+
+The user can:
+
+- monitor open tasks
+- see upcoming deadlines
+- review reminder times
+- revisit extracted steps
+- mark work as complete
+- delete tasks that are no longer needed
+
+A background worker checks scheduled reminders and sends the reminder email when it becomes due.
+
+---
+
+# What makes BRIDGE different?
+
+BRIDGE is not simply a translation interface.
+
+And it is not simply a chatbot wrapped around an AI model.
+
+The AI model is one service inside the application.
+
+BRIDGE adds a controlled workflow around it:
+
+- multilingual explanation
+- structured task extraction
+- source evidence
+- missing-information detection
+- schedule vs. deadline separation
+- JSON Schema validation
+- custom translation checks
+- passwordless authentication
+- persistent task tracking
+- reminder scheduling
+- email delivery
+
+The goal is not simply **generation**.
+
+The goal is **understanding that can be checked and acted on**.
+
+---
+
+# What we learned while building it
+
+Some of the most important improvements came from things that initially failed.
+
+### Translation can be correct while an instruction is still lost
+
+During multilingual testing, we found cases where an important follow-up instruction such as updating a task status could disappear.
+
+We strengthened extraction so explicit obligations are preserved as actionable steps.
+
+### Dates can be correct but still mean different things
+
+An event time is not automatically a submission deadline.
+
+We changed BRIDGE so uncertainty is exposed rather than silently resolved.
+
+### Multilingual timing can create duplication
+
+We found a Chinese timing case where the translated schedule and source-preservation logic could repeat the same date and time.
+
+We corrected the comparison logic and reran the multilingual checks.
+
+### Fluent AI output is not proof
+
+That led to one of BRIDGE's most important features: **source evidence**.
+
+These changes moved BRIDGE from simply producing an answer toward producing an answer that can be reviewed.
+
+---
+
+# Technology stack
 
 | Layer | Technologies |
 |---|---|
 | Frontend | HTML, CSS, JavaScript |
 | Backend | Python, Flask, Waitress |
-| AI | Gemini API or OpenAI API |
+| AI | Gemini API with OpenAI-compatible provider support |
 | Structured output | JSON, JSON Schema, `jsonschema` |
 | Data | SQLite |
 | Authentication | Passwordless email sign-in, Flask sessions |
@@ -56,39 +293,100 @@ BRIDGE deliberately does **not** assume that an event date is automatically a su
 | Background processing | Python reminder worker |
 | Configuration | `.env`, `python-dotenv` |
 
-### Architecture in one line
+### Architecture
 
 **Browser → Flask API → AI analysis → validation → SQLite → reminder worker → email**
 
-Gemini or OpenAI is one service inside BRIDGE. The application also provides structured extraction, validation, source evidence, task persistence, authentication, reminder scheduling, and email delivery.
+For the deeper technical design, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## Quick start
+---
 
-Choose your operating system:
+# Speed, accuracy, and trade-offs
+
+BRIDGE is designed to reduce the number of separate steps involved in interpreting a message:
+
+**read → translate → summarize → extract actions → identify dates → create checklist → remember follow-up**
+
+becomes:
+
+**paste → understand → verify → track**
+
+We do not currently claim a formal percentage of time saved or a measured accuracy score. Those require structured user testing.
+
+Some current trade-offs include:
+
+- AI flexibility vs. deterministic output
+- automation vs. user confirmation
+- lightweight SQLite storage vs. production-scale infrastructure
+- external AI/email services vs. privacy and provider dependence
+
+BRIDGE addresses those risks through structured output, validation, source evidence, user confirmation, and clear limitations.
+
+See:
+
+- [Testing](docs/TESTING.md)
+- [Privacy & limitations](docs/PRIVACY_AND_LIMITATIONS.md)
+
+---
+
+# What's next?
+
+The next stage of BRIDGE is about understanding communication wherever it already exists.
+
+Planned directions include:
+
+- PDF and document upload
+- OCR for photographed or scanned letters
+- voice input
+- text-to-speech
+- additional languages
+- Google Calendar and Outlook Calendar integration
+- Gmail and Outlook message import
+- Slack, Teams, Notion, and task-platform integrations
+- confidence and ambiguity scoring
+- conflicting-date detection
+- duplicate-task detection
+- enterprise privacy controls
+- production-scale databases and background jobs
+
+### Our next experiment
+
+A future user study could compare:
+
+1. how long users take to interpret a complex message without BRIDGE,
+2. how long they take with BRIDGE,
+3. whether they identify the same instructions and dates,
+4. where misunderstandings still occur.
+
+That would let us measure real improvements in speed, usability, and interpretation accuracy rather than guessing.
+
+---
+
+# Run BRIDGE locally
+
+Choose your setup guide:
 
 - **Windows:** [WINDOWS_SETUP.md](WINDOWS_SETUP.md)
 - **macOS / Linux:** [MAC_LINUX_SETUP.md](MAC_LINUX_SETUP.md)
-- **Short overview:** [QUICKSTART.md](QUICKSTART.md)
+- **Quick start:** [QUICKSTART.md](QUICKSTART.md)
 
-Then configure the services you want:
+Configure optional live services:
 
 - **Gemini AI:** [GEMINI_SETUP.md](GEMINI_SETUP.md)
 - **Gmail email delivery:** [GMAIL_SETUP.md](GMAIL_SETUP.md)
-- **Other live-service options:** [docs/LIVE_SERVICES.md](docs/LIVE_SERVICES.md)
+- **Other live services:** [docs/LIVE_SERVICES.md](docs/LIVE_SERVICES.md)
 
-> Never commit your real `.env` file, API keys, Gmail app password, local database, or virtual environment to a public repository. Use `.env.example` as the public template.
+> Never commit your real `.env`, API keys, Gmail app password, local database, or virtual environment to a public repository. Use `.env.example` as the safe configuration template.
 
-## Run BRIDGE
+BRIDGE runs with two processes.
 
-BRIDGE uses two processes:
-
-**Terminal 1 — web application**
+### Terminal 1 — web application
 
 ```bash
 python run.py
 ```
 
-**Terminal 2 — reminder worker**
+### Terminal 2 — reminder worker
 
 ```bash
 python worker.py
@@ -100,51 +398,35 @@ Then open:
 http://127.0.0.1:5000
 ```
 
-If your virtual environment is not activated, use the OS-specific commands in the setup guides instead.
+---
 
-## AI and email modes
-
-AI and email are independent settings.
-
-| Setting | Local/review mode | Live mode |
-|---|---|---|
-| `AI_MODE` | `demo` | `gemini` or `openai` |
-| `MAIL_MODE` | `local` | `gmail` |
-
-This means you can test live AI with the local inbox, or real Gmail delivery with prepared examples.
-
-## Project structure
+# Project structure
 
 ```text
 BRIDGE/
-├── run.py                  # Web-server entry point
-├── worker.py               # Reminder worker
-├── requirements.txt
-├── requirements-lock.txt
-├── .env.example            # Safe configuration template
+├── bridge/
+├── docs/
+├── images/
+├── scripts/
+├── tests/
+├── .env.example
+├── .gitignore
 ├── README.md
 ├── QUICKSTART.md
 ├── WINDOWS_SETUP.md
 ├── MAC_LINUX_SETUP.md
 ├── GEMINI_SETUP.md
 ├── GMAIL_SETUP.md
-├── bridge/
-│   ├── analysis.py         # AI analysis, translation and validation
-│   ├── routes.py           # Web/API routes
-│   ├── db.py               # SQLite access
-│   ├── mail.py             # Email delivery
-│   ├── reminders.py        # Reminder processing
-│   ├── security.py         # Security controls
-│   ├── templates/
-│   └── static/
-├── scripts/
-├── tests/
-└── docs/
+├── requirements.txt
+├── requirements-lock.txt
+├── requirements-dev.txt
+├── run.py
+└── worker.py
 ```
 
-The `instance/` folder is created locally and contains runtime data such as the SQLite database. Do not commit it publicly.
+---
 
-## Testing
+# Testing
 
 Install the development requirements and run:
 
@@ -159,36 +441,23 @@ For the multilingual live check:
 python scripts/check_translation.py
 ```
 
-See [docs/TESTING.md](docs/TESTING.md) for the detailed test scope and limitations.
+Read the full testing notes in [docs/TESTING.md](docs/TESTING.md).
 
-## Important limitations
+---
 
-- Input is pasted text only; PDF/image/OCR upload is not implemented yet.
-- AI output can still be wrong, incomplete, or mistranslated and should be reviewed against the source.
-- Exact source matching proves that the quoted passage exists, not that the AI interpreted it perfectly.
-- Users confirm deadlines and reminder times themselves; BRIDGE does not invent missing dates.
-- One reminder is supported per saved task.
-- SQLite and the current worker design are appropriate for this prototype, not high-volume production use.
-- Real email delivery depends on Gmail SMTP availability, sending limits, and spam filtering.
+# Documentation
 
-Read [docs/PRIVACY_AND_LIMITATIONS.md](docs/PRIVACY_AND_LIMITATIONS.md) before using BRIDGE with real information.
-
-## Future direction
-
-Planned directions include PDF/document upload, OCR, voice input and output, more languages, calendar integration, Gmail/Outlook import, Slack/Teams/Notion integrations, confidence and ambiguity scoring, stronger enterprise privacy controls, and production-scale databases and job queues.
-
-## More documentation
-
-- [Quick start](QUICKSTART.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Testing](docs/TESTING.md)
+- [Privacy & limitations](docs/PRIVACY_AND_LIMITATIONS.md)
+- [Deployment](docs/DEPLOYMENT.md)
+- [Live services](docs/LIVE_SERVICES.md)
 - [Windows setup](WINDOWS_SETUP.md)
 - [macOS / Linux setup](MAC_LINUX_SETUP.md)
 - [Gemini setup](GEMINI_SETUP.md)
 - [Gmail setup](GMAIL_SETUP.md)
-- [Architecture and API](docs/ARCHITECTURE.md)
-- [Live services](docs/LIVE_SERVICES.md)
-- [Testing](docs/TESTING.md)
-- [Privacy and limitations](docs/PRIVACY_AND_LIMITATIONS.md)
-- [Deployment notes](docs/DEPLOYMENT.md)
+
+---
 
 ## Team
 
