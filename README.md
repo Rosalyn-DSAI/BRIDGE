@@ -467,4 +467,4 @@ Built by:
 - Ruyi Gai
 - Odunayo Juliana Owokade
 
-**UCM MuleHacks Hackathon 2026**
+**UCM MuleHacks 2026 — Best Graduate Hack**
